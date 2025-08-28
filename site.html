@@ -1,0 +1,236 @@
+<!DOCTYPE html>
+<html lang="pt-BR">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Para Minha Amada Bel</title>
+    <link rel="preconnect" href="https://fonts.googleapis.com">
+    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+    <link href="https://fonts.googleapis.com/css2?family=Parisienne&family=Poppins:wght@300;400&display=swap" rel="stylesheet">
+    <script src="https://cdn.tailwindcss.com"></script>
+    <style>
+        /* Estilos personalizados para adicionar o toque romântico */
+        body {
+            font-family: 'Poppins', sans-serif;
+            background: linear-gradient(135deg, #ffdde1, #ee9ca7);
+            overflow-x: hidden; /* Previne scroll horizontal */
+        }
+
+        .font-parisienne {
+            font-family: 'Parisienne', cursive;
+        }
+
+        /* Animação de corações caindo (Corrigido) */
+        .heart {
+            position: absolute;
+            opacity: 0;
+            transform: rotate(-45deg);
+            animation: fall 10s linear infinite;
+            z-index: 0;
+            background-color: #ff7b7b;
+        }
+        .heart::before,
+        .heart::after {
+            content: '';
+            position: absolute;
+            width: 100%;
+            height: 100%;
+            border-radius: 50%;
+            background-color: inherit;
+        }
+        .heart::before { top: -50%; left: 0; }
+        .heart::after { top: 0; left: 50%; }
+
+        @keyframes fall {
+            0% { transform: translateY(-10vh) rotate(-45deg); opacity: 1; }
+            100% { transform: translateY(110vh) rotate(-45deg); opacity: 0; }
+        }
+
+        /* Efeito de brilho sutil nas imagens */
+        .gallery-img-container {
+            transition: transform 0.3s ease, box-shadow 0.3s ease;
+        }
+        .gallery-img-container:hover {
+            transform: scale(1.05);
+            box-shadow: 0 10px 25px rgba(255, 105, 180, 0.5);
+        }
+        
+        /* Estilos para os ícones interativos */
+        .interactive-icon {
+            position: absolute;
+            font-size: 2rem;
+            pointer-events: none;
+            user-select: none;
+            opacity: 0;
+        }
+
+        /* Animações dos Ícones */
+        .animate-rings { animation: fall-and-fade 2s ease-out forwards; }
+        @keyframes fall-and-fade {
+            0% { transform: translateY(-20%) translateX(-50%) scale(0.5); opacity: 1; }
+            100% { transform: translateY(100%) translateX(-50%) scale(1); opacity: 0; }
+        }
+
+        .animate-car { animation: drive-by 3s linear forwards; }
+        @keyframes drive-by {
+            0% { transform: translateX(-100%); opacity: 1; }
+            100% { transform: translateX(250%); opacity: 0; }
+        }
+
+        .animate-food { animation: pop-up 1.5s ease-out forwards; }
+        @keyframes pop-up {
+            0%, 100% { transform: translateY(0) scale(0); opacity: 0; }
+            50% { transform: translateY(-20px) scale(1); opacity: 1; }
+        }
+
+        .animate-party { animation: burst 1.2s ease-out forwards; }
+        @keyframes burst {
+            0% { transform: scale(0) rotate(0deg); opacity: 1; }
+            50% { transform: scale(1.2) rotate(180deg); }
+            100% { transform: scale(0) rotate(360deg); opacity: 0; }
+        }
+
+        .animate-garden { animation: float-up 2.5s ease-in-out forwards; }
+        @keyframes float-up {
+            0% { transform: translateY(20px) scale(0.7); opacity: 0; }
+            50% { opacity: 1; }
+            100% { transform: translateY(-30px) scale(1); opacity: 0; }
+        }
+    </style>
+</head>
+<body class="text-gray-800">
+
+    <!-- Container para os corações animados -->
+    <div id="hearts-container" class="fixed top-0 left-0 w-full h-full pointer-events-none"></div>
+
+    <!-- Conteúdo principal -->
+    <div class="relative z-10 container mx-auto px-4 py-12 flex flex-col items-center min-h-screen justify-center">
+
+        <header class="text-center mb-8">
+            <h1 class="font-parisienne text-6xl md:text-8xl text-white" style="text-shadow: 2px 2px 4px rgba(0,0,0,0.2);">
+                Para minha amada Bel
+            </h1>
+            
+        </header>
+
+        <main class="bg-white/80 backdrop-blur-sm p-8 rounded-2xl shadow-2xl max-w-2xl text-center mb-12">
+            <h2 class="font-parisienne text-4xl text-pink-500 mb-4">Meu Amor</h2>
+            <p class="text-lg leading-relaxed">
+                "Desde que você chegou, meu mundo floresceu. Cada dia ao seu lado é um presente,
+                e cada sorriso seu ilumina minha alma. Este é apenas um pequeno gesto para te lembrar
+                do tamanho do meu amor por você. Você é tudo pra mim, meu porto seguro e
+                a mais bela história que o destino escreveu para mim."
+            </p>
+        </main>
+
+        <section class="w-full max-w-5xl">
+            <h3 class="font-parisienne text-5xl text-center text-white mb-8" style="text-shadow: 1px 1px 3px rgba(0,0,0,0.2);">Nossos Momentos</h3>
+            <div class="grid grid-cols-1 sm:grid-cols-2 md:grid-cols-3 lg:grid-cols-5 gap-6">
+                <!-- Imagem 1: Aliança -->
+                <div id="alianca-container" class="gallery-img-container bg-white p-3 rounded-lg shadow-lg relative overflow-hidden">
+                    <img src="fotos/alianca.jpeg" alt="Quando compramos a aliança" class="rounded-md w-full h-auto">
+                </div>
+                <!-- Imagem 2: Viagem -->
+                <div id="viagem-container" class="gallery-img-container bg-white p-3 rounded-lg shadow-lg relative overflow-hidden">
+                    <img src="fotos/viagem.jpeg" alt="Lembrança de uma viagem especial" class="rounded-md w-full h-auto">
+                </div>
+                <!-- Imagem 3: Restaurante -->
+                <div id="restaurante-container" class="gallery-img-container bg-white p-3 rounded-lg shadow-lg relative overflow-hidden">
+                    <img src="fotos/comida.jpeg" alt="Um momento feliz do dia a dia" class="rounded-md w-full h-auto">
+                </div>
+                <!-- Imagem 4: Festa -->
+                <div id="festa-container" class="gallery-img-container bg-white p-3 rounded-lg shadow-lg relative overflow-hidden">
+                    <img src="fotos/festa.jpeg" alt="Momento em uma festa" class="rounded-md w-full h-auto">
+                </div>
+                <!-- Imagem 5: Jardim Botânico -->
+                <div id="jardim-container" class="gallery-img-container bg-white p-3 rounded-lg shadow-lg relative overflow-hidden">
+                    <img src="fotos/jb.jpeg" alt="Passeio no Jardim Botânico" class="rounded-md w-full h-auto">
+                </div>
+            </div>
+        </section>
+
+        <footer class="text-center mt-12">
+            <p class="text-white/90 text-lg">Com todo meu amor,</p>
+            <p class="font-parisienne text-3xl text-white mt-1">Mateus</p>
+        </footer>
+
+    </div>
+
+    <script>
+        // --- Animação de Corações no Fundo ---
+        const heartsContainer = document.getElementById('hearts-container');
+        function createFallingHeart() {
+            const heart = document.createElement('div');
+            heart.classList.add('heart');
+            heart.style.left = Math.random() * 100 + 'vw';
+            heart.style.animationDuration = Math.random() * 5 + 7 + 's';
+            const size = Math.random() * 15 + 10;
+            heart.style.width = `${size}px`;
+            heart.style.height = `${size}px`;
+            heartsContainer.appendChild(heart);
+            setTimeout(() => { heart.remove(); }, 12000);
+        }
+        setInterval(createFallingHeart, 300);
+
+        // --- Lógica de Interatividade das Imagens ---
+        function createInteractiveIcon(container, { content, animationClass, top, left, duration }) {
+            const icon = document.createElement('div');
+            icon.classList.add('interactive-icon', animationClass);
+            icon.innerHTML = content;
+            icon.style.top = top;
+            icon.style.left = left;
+            container.appendChild(icon);
+            setTimeout(() => icon.remove(), duration);
+        }
+
+        function manageHoverAnimation(elementId, options) {
+            const container = document.getElementById(elementId);
+            let animationInterval = null;
+
+            container.addEventListener('mouseenter', () => {
+                if (animationInterval) return;
+                createInteractiveIcon(container, options.getIconConfig());
+                animationInterval = setInterval(() => {
+                    createInteractiveIcon(container, options.getIconConfig());
+                }, options.interval);
+            });
+
+            container.addEventListener('mouseleave', () => {
+                clearInterval(animationInterval);
+                animationInterval = null;
+            });
+        }
+
+        // Configuração para cada imagem
+        manageHoverAnimation('alianca-container', {
+            interval: 400,
+            getIconConfig: () => ({ content: '💍', animationClass: 'animate-rings', top: '0%', left: `${Math.random() * 80 + 10}%`, duration: 2000 })
+        });
+        manageHoverAnimation('viagem-cntainer', {
+            interval: 2500,
+            getIconConfig: () => ({ content: '🚗', animationClass: 'animate-car', top: `${Math.random() * 60 + 20}%`, left: '0%', duration: 3000 })
+        });
+        manageHoverAnimation('restaurante-container', {
+            interval: 500,
+            getIconConfig: () => {
+                const foods = ['🍔', '🍕', '🍝', '🍰', '🍷','🍺'];
+                return { content: foods[Math.floor(Math.random() * foods.length)], animationClass: 'animate-food', top: `${Math.random() * 80 + 10}%`, left: `${Math.random() * 80 + 10}%`, duration: 1500 };
+            }
+        });
+        manageHoverAnimation('festa-container', {
+            interval: 300,
+            getIconConfig: () => {
+                const party = ['🎉', '🎈', '🎊',];
+                return { content: party[Math.floor(Math.random() * party.length)], animationClass: 'animate-party', top: `${Math.random() * 80 + 10}%`, left: `${Math.random() * 80 + 10}%`, duration: 1200 };
+            }
+        });
+        manageHoverAnimation('jardim-container', {
+            interval: 600,
+            getIconConfig: () => {
+                const garden = ['🌸', '🌷', '🌿', '🦋'];
+                return { content: garden[Math.floor(Math.random() * garden.length)], animationClass: 'animate-garden', top: `${Math.random() * 80 + 10}%`, left: `${Math.random() * 80 + 10}%`, duration: 2500 };
+            }
+        });
+    </script>
+</body>
+</html>
